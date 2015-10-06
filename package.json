@@ -4,6 +4,7 @@
   "description": "JSCS Linter for Hound",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "qunit -c index.js -t tests/**/*-test.js"
   },
   "repository": {
@@ -21,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/thoughtbot/hound-jscs/issues"
   },
-  "homepage": "https://github.com/thoughtbot/hound-jscs#readme"
+  "homepage": "https://github.com/thoughtbot/hound-jscs#readme",
+  "dependencies": {
+    "jscs": "^2.2.1",
+    "node-resque": "^1.0.2",
+    "redis": "^2.1.0"
+  }
 }
