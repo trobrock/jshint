@@ -2,7 +2,7 @@
 
 [JSHint] is a static code analysis tool for JavaScript
 
-`hound-jshint` is a Node service that polls `JsHintReviewJob`s from the
+`hound-jshint` is a Node service that polls `JshintReviewJob`s from the
 `jshint_review` queue, lints code with `JSHint`, then pushes the results to
 the `high` queue, as `CompletedFileReviewJob`s.
 
