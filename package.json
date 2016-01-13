@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/thoughtbot/hound-jshint#readme",
   "dependencies": {
+    "hound-javascript": "0.0.1",
     "jshint": "^2.8.0",
     "node-resque": "^1.1.1",
     "redis": "^2.1.0",

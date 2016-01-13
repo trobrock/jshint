@@ -1,8 +1,8 @@
 var Redis = require("fakeredis");
 var RSVP = require("rsvp");
 var Linter = require("../lib/linter");
-var Queue = require("../lib/queue");
 var lastJob = require("./helpers/redis").lastJob;
+var HoundJavascript = require("hound-javascript");
 
 QUnit.module("Integration");
 
@@ -12,11 +12,8 @@ RSVP.on("error", function(error) {
 
 asyncTest("Linter communicates over resque", function() {
   var redis = Redis.createClient();
-  var outbound = new Queue({
-    redis: redis,
-    queueName: "high",
-  });
-  var linter = new Linter(outbound);
+  var houndJavascript = new HoundJavascript(redis);
+  var linter = new Linter(houndJavascript);
   var inboundJob = {
     content: "foo();",
     config: "{ \"undef\": true }",
@@ -32,8 +29,15 @@ asyncTest("Linter communicates over resque", function() {
       var payload = job.args[0];
       var violation = payload.violations[0];
 
-      ok(violation.message.match(/not defined/i), "includes the proper message");
-      equal(violation.line, 1, "includes the proper line");
+      ok(
+        violation.message.match(/not defined/i),
+        "includes the proper message"
+      );
+      equal(
+        violation.line,
+        1,
+        "includes the proper line"
+      );
       equal(
         payload.filename,
         inboundJob.filename,
