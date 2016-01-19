@@ -1,3 +1,4 @@
+var fs = require("fs");
 var Config = require("../lib/config");
 
 QUnit.module("Config");
@@ -11,12 +12,25 @@ test("Parsing a JSHint config file", function() {
   );
 });
 
-test("Having no JSHint config file", function() {
-  var config = new Config(null);
+test("Given an empty JSHint config file", function() {
+  var config = new Config("{}");
 
+  var expectedConfig = JSON.parse(fs.readFileSync("config/.jshintrc", "utf8"));
+  var parsedConfig = config.parse();
   deepEqual(
-    config.parse(),
-    {}
+    parsedConfig,
+    expectedConfig
+  );
+});
+
+test("Having no JSHint config file", function() {
+  var config = new Config(undefined);
+
+  var expectedConfig = JSON.parse(fs.readFileSync("config/.jshintrc", "utf8"));
+  var parsedConfig = config.parse();
+  deepEqual(
+    parsedConfig,
+    expectedConfig
   );
 });
 
