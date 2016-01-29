@@ -13,7 +13,7 @@ test("Parsing a JSHint config file", function() {
 });
 
 test("Parsing a JSHint config file with comments", function() {
-  var config = new Config("// Some comment\n{ \"unused\": true }");
+  var config = new Config("// Some comment\n// Another comment\n{ \"unused\": true }");
 
   deepEqual(
     config.parse(),

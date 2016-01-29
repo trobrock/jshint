@@ -32,7 +32,7 @@
     "node-resque": "^1.1.1",
     "redis": "^2.1.0",
     "rsvp": "^3.1.0",
-    "strip-comments": "^0.4.3"
+    "strip-json-comments": "^2.0.0"
   },
   "devDependencies": {
     "fakeredis": "^0.3.3",
