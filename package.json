@@ -28,7 +28,7 @@
   "homepage": "https://github.com/thoughtbot/hound-jshint#readme",
   "dependencies": {
     "hound-javascript": "0.0.2",
-    "jshint": "^2.8.0",
+    "jshint": "^2.9.0",
     "node-resque": "^1.3.0",
     "redis": "^2.1.0",
     "rsvp": "^3.1.0",
